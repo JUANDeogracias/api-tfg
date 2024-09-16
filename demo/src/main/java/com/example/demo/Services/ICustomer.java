@@ -7,4 +7,5 @@ import java.util.List;
 public interface ICustomer {
 
     public List<Customer> getAllCustomer();
+    public void addCustomer(Customer customer);
 }
