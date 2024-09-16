@@ -5,10 +5,7 @@ import com.example.demo.Services.ICustomer;
 import com.example.demo.Services.Impl.CustomerImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,6 +20,11 @@ public class CustomerController {
     @GetMapping("/v1/customer")
     public List<Customer> getCustomers() {
         return customerImpl.getAllCustomer();
+    }
+
+    @PostMapping("/v1/add")
+    public void addCustomer(@RequestBody Customer customer) {
+        customerImpl.addCustomer(customer);
     }
 }
 

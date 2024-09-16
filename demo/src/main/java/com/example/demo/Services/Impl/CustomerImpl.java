@@ -22,4 +22,8 @@ public class CustomerImpl implements ICustomer {
 
         return customers;
     }
+
+    public void addCustomer(Customer customer) {
+        customerRepository.save(customer);
+    }
 }
