@@ -4,8 +4,11 @@ import com.example.demo.Entities.Customer;
 import com.example.demo.Repository.CustomerRepository;
 import com.example.demo.Services.ICustomer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.awt.print.Pageable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,5 +28,12 @@ public class CustomerImpl implements ICustomer {
 
     public void addCustomer(Customer customer) {
         customerRepository.save(customer);
+    }
+
+    public Page<Customer> getSortOfCustomers(int firstSize, int lastSize) {
+
+        PageRequest pageable = PageRequest.of(firstSize, lastSize);
+
+        return customerRepository.findAll(pageable);
     }
 }

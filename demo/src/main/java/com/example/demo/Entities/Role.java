@@ -22,12 +22,15 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    /*
+    * ENUM.STRING va a almacenar los datos en la bbdd como STRING y ORDINAL
+    * los guarda como tipo entero ya que el enum sus valores son de tipo entero
+    * */
     @Column(name= "role_name", nullable = false, unique = false)
     @Enumerated(EnumType.STRING)
-    private String types_role;
+    private RoleEnum types_role;
 
     @JsonIgnore
     @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY)
     private List<Customer> usuarios = new ArrayList<>();
-
 }
